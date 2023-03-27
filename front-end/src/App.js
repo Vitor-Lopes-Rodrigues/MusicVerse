@@ -1,12 +1,9 @@
-import logo from './logo.svg';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <h1>
-        teste
-      </h1>
+      <h1>MusicVerse</h1>
     </div>
   );
 }
