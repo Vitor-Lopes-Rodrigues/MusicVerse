@@ -9,11 +9,33 @@ import Footer from "./components/Footer";
 import Login from "./pages/Login/Login";
 import Cadastro from "./pages/Cadastro/Cadastro";
 
+//ImportandoStatesAuthChanged
+import { onAuthStateChanged } from "firebase/auth"
+
+//hooks
+import {useState, useEffect} from "react";
+import { useAuthentication} from "./hooks/useAuthentication";
+
 //Importando Context
 import  {AuthProvider} from "./context/AuthContext";
 
 //Pages
 function App() {
+
+    const [user,setUser] = useState(undefined)
+    const {auth} = useAuthentication()
+
+    const loadingUser = user === undefined
+
+    useEffect(() => {
+        onAuthStateChanged(auth, (user) => {
+            setUser(user)
+        })
+    }, [auth])
+
+    if(loadingUser){
+        return  <p>Carregando....</p>;
+    }
   return (
     <div className="App">
       <AuthProvider>
