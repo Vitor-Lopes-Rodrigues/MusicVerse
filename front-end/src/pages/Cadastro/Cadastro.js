@@ -5,6 +5,7 @@ import styles from "./Cadastro.module.css";
 
 //Importando Hooks para cadastro
 import {useState, useEffect} from "react";
+import {useAuthentication} from "../../hooks/useAuthentication";
 
 const Cadastro = () => {
 
@@ -13,13 +14,17 @@ const Cadastro = () => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [confirmPassword, setConfirmPassword] = useState("")
-    const [error, setErro] = useState("")
+    const [error, setError] = useState("")
+
+
+    const { createUser, error: authError, loading } = useAuthentication()
+
 
     //Criando submit de formulário
-    const handleSubmit = (e) => {
+    const handleSubmit =  async (e) => {
         e.preventDefault()
         //Enviei o formulário fica igual a vazio(sem erros)
-        setErro("")
+        setError("")
 
         const user = {
             displayName,
@@ -29,11 +34,16 @@ const Cadastro = () => {
 
         //Criando validação de usuario
         if(password !== confirmPassword){
-            setErro("As senhas precisam ser iguais")
+            setError("As senhas precisam ser iguais")
             return
         }
         console.log(user);
     }
+    useEffect(() =>{
+        if(authError){
+            setError(authError)
+        }
+    }, [authError])
     return(
         <div className={styles.register}>
             <h1>Cadastre-se para postar</h1>
@@ -55,7 +65,12 @@ const Cadastro = () => {
                     <span>Confirmação de senha:</span>
                     <input type="password" name="confirmPassword" required placeholder="Confirme a sua senha" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)}/>
                 </label>
-                <button className="btn">Cadastrar</button>
+                {!loading && <button className="btn">Cadastrar</button>}
+                {loading && (
+                    <button className="btn" disabled>
+                        Aguarde...
+                    </button>
+                )}
                 {error && <p className="error">{error}</p>}
             </form>
         </div>

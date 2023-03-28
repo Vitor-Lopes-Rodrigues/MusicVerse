@@ -9,22 +9,27 @@ import Footer from "./components/Footer";
 import Login from "./pages/Login/Login";
 import Cadastro from "./pages/Cadastro/Cadastro";
 
+//Importando Context
+import  {AuthProvider} from "./context/AuthContext";
+
 //Pages
 function App() {
   return (
     <div className="App">
-      <BrowserRouter>
-          <Navbar />
-        <div className="container">
-            <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/about" element={<About />}/>
-                <Route path="/login" element={<Login />} />
-                <Route path="/cadastro" element={<Cadastro />}/>
-            </Routes>
-        </div>
-          <Footer />
-      </BrowserRouter>
+      <AuthProvider>
+          <BrowserRouter>
+              <Navbar />
+              <div className="container">
+                  <Routes>
+                      <Route path="/" element={<Home />} />
+                      <Route path="/about" element={<About />}/>
+                      <Route path="/login" element={<Login />} />
+                      <Route path="/cadastro" element={<Cadastro />}/>
+                  </Routes>
+              </div>
+              <Footer />
+          </BrowserRouter>
+      </AuthProvider>
     </div>
   );
 }
