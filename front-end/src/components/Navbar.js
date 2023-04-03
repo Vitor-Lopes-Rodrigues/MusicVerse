@@ -4,6 +4,8 @@ import React from "react";
 import styles from "./Navbar.module.css"
 //Importando Link
 import {NavLink} from "react-router-dom";
+import { useAuthentication} from "../hooks/useAuthentication";
+
 
 const Navbar = () => {
     return(
@@ -20,6 +22,12 @@ const Navbar = () => {
                 </li>
                 <li>
                     <NavLink to="/cadastro" className={({isActive}) => (isActive ?  styles.active : "" )}>Cadastrar</NavLink>
+                </li>
+                <li>
+                    <NavLink to="/posts/create" className={({isActive}) => (isActive ?  styles.active : "" )}>NovoPost</NavLink>
+                </li>
+                <li>
+                    <NavLink to="/dashboard" className={({isActive}) => (isActive ?  styles.active : "" )}>Dashboard</NavLink>
                 </li>
                 <li>
                     <NavLink to="/about"className={({isActive}) => (isActive ?  styles.active : "" )}>Sobre</NavLink>
