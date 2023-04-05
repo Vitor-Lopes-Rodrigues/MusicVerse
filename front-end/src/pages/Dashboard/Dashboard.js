@@ -1,13 +1,13 @@
+//importando React
 import React from "react";
-
-import styles from './Dashboard.module.css'
+//Importando Components
+import DashboardComponents from "../../components/DashboardComponents/DashboardComponents";
+//import styles from './Dashboard.module.css'
 const Dashboard = () => {
     return(
-        <div>
-            <h1>
-                Dashboard
-            </h1>
-        </div>
+        <React.Fragment>
+            <DashboardComponents/>
+        </React.Fragment>
     )
 }
 

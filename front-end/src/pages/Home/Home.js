@@ -1,13 +1,15 @@
 //Importando React
 import React from "react";
 //Importando css de "modules"
-import styles from "./Home.module.css"
+
+//Importando Components
+import HomeComponets from "../../components/HomeComponents/HomeComponets";
 
 const Home = () => {
     return(
-        <div>
-            <h1>Home</h1>
-        </div>
+        <React.Fragment>
+            <HomeComponets/>
+        </React.Fragment>
     )
 }
 export default Home
