@@ -24,7 +24,7 @@ const Post =  () => {
                 </label>
                 <label>
                     <span>IMAGEM PARA POSTAR</span>
-                    <input type="file" name="image" required placeholder="Insira uma imagem sobre musica em geral" onChange={(e) =>setImage(e.target.value)} value={image}/>
+                    <input   type="file" name="image" required placeholder="Insira uma imagem sobre musica em geral" onChange={(e) =>setImage(e.target.value)} value={image}/>
                 </label>
                 <label>
                     <span>Conteúdo:</span>

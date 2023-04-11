@@ -11,6 +11,7 @@ const LoginComponents = () =>{
     //Criando constantes para nome,email,senha,cofirmacaoSenha,errorIndicados
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+    const {phone, setPhone} = useState("")
     const [error, setError] = useState("")
     // const { createUser, error: authError, loading } = useAuthentication()
 
@@ -39,6 +40,11 @@ const LoginComponents = () =>{
                         <span>Senha:</span>
                         <input type="password" name="password" required placeholder="Insira sua senha" value={password}
                                onChange={(e) => setPassword(e.target.value)}/>
+                    </label>
+                    <label>
+                        <span>Phone:</span>
+                        <input type="phone" name="phone" required placeholder=" Insira o seu telefone" value={phone}
+                               onChange={(e) => setPhone(e.target.value)}/>
                     </label>
                     <button className="btn">Entrar</button>
                     {error && <p className="error">{error}</p>}
