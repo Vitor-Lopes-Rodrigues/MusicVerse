@@ -2,6 +2,10 @@
 import React, {useState} from "react";
 //Importando Styles
 import styles from "../../pages/Cadastro/Cadastro.module.css";
+//Importando Requisicao
+import axios from "axios";
+//Importando navigation
+import {Navigate} from "react-router-dom";
 
 
 const CadastroComponents = () => {
@@ -99,6 +103,16 @@ const CadastroComponents = () => {
             state:state,
             country:country
         }
+    }
+
+    const cadastrar = () => {
+        axios.post(`https://${process.env.REACT_APP_LINK_API}/user`, state.data)
+            .then(function (response){
+                Navigate('/login')
+            }).catch(function (error){
+                // aqui temos acesso ao erro, quando alguma coisa inesperada acontece:
+            console.log(error)
+        })
     }
     //Validando CPF com formato ("000.000.000-00")
     const validaCpf = (cpfRecebido) => {
@@ -203,7 +217,7 @@ const CadastroComponents = () => {
                     <span>Continente</span>
                     <input type="text" name="country" required placeholder="Insira seu continente" value={country} onChange={(e) => setCountry(e.target.value)}/>
                 </label>
-                <button className="btn">Cadastrar</button>
+                <button className="btn" onClick={cadastrar}>Cadastrar</button>
                 {/*{!loading &&}*/}
                 {/*{loading && (*/}
                 {/*    <button className="btn" disabled>*/}
