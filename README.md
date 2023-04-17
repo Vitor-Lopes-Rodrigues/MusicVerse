@@ -1,1 +1,4 @@
 # MusicVerse
+
+```
+npm install
