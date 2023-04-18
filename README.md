@@ -10,24 +10,25 @@ Para o projeto React, optamos neste projeto em utilizar o aplicativo de desenvol
 <b>Não foi contra indicado o uso desta ferramento para o desenvolvimento da aplicação</b>
 
 ## Dependencys
-"dependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-router-dom": "^6.9.0",
-    "react-scripts": "5.0.1",
-    "web-vitals": "^2.1.4"
-   },
+"dependencies": 
+    <h2>"react": "^18.2.0", <h2/>
+    <h2>"react-dom": "^18.2.0",<h2/>
+    <h2>"react-router-dom": "^6.9.0", <h2/>
+    <h2>"react-scripts": "5.0.1", <h2/>
+    <h2>"web-vitals": "^2.1.4"<h2/>
+   
 
 ## Node JS (Back-End)
 Para a aplicação <b>Back-end</b> utilizamos o aplicativo de desenvolvimento (WebStorm).
+        
 ## Dependencys
-"body-parser": VERSION "^1.20.2",
-    "express": VERSION "^4.18.2",
-    "mysql2":  VERSION  "^3.2.3",
-    "path": VERSION  "^0.12.7",
-    "sequelize": VERSION "^6.31.0",
-    "sequelize-cli": VERSION "^6.6.0"
-  },
+    <h2>"body-parser": "^1.20.2",<h2/>
+    <h2>"express": "^4.18.2",<h2/>
+    <h2>"mysql2": "^3.2.3",<h2/>
+    <h2>"path": "^0.12.7",<h2/>
+    <h2>"sequelize": "^6.31.0",<h2/>
+    <h2>"sequelize-cli": "^6.6.0"<h2/>
+  
   
   ## Contribution
 -Gabriel dos Santos Rezende  RA:821236754
