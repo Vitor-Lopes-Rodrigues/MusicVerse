@@ -30,9 +30,9 @@ Para a aplicação <b>Back-end</b> utilizamos o aplicativo de desenvolvimento (W
   
   
   ## Contribution
--Gabriel dos Santos Rezende  RA:821236754
--Kelwin Martins Mansanari    RA:821232404
--Vitor Lopes Rodrigues       RA:822145993
+-Gabriel dos Santos Rezende  RA:821236754 </br>
+-Kelwin Martins Mansanari    RA:821232404 </br>
+-Vitor Lopes Rodrigues       RA:822145993 </br>
 
 ## License
 # MusicVerse USJT 2023 🫡
