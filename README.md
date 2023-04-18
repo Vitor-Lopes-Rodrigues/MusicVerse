@@ -5,7 +5,7 @@
 ## Instalation 
 Para a sua instalação, clone o projeto do GitHub via gitbash, ou baixando em Winrar.
 
-## React
+## React (Front-End)
 Para o projeto React, optamos neste projeto em utilizar o aplicativo de desenvolvimento (WebStorm). Disponibilizado pela faculdade! 
 <b>Não foi contra indicado o uso desta ferramento para o desenvolvimento da aplicação</b>
 
