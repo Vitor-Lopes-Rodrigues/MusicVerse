@@ -23,6 +23,8 @@ const Register = () => {
     const [state,setState] = useState("");
     const [country,setCountry] = useState("");
 
+    const token = localStorage.getItem('token');
+
     const handleSubmit =  async (e) => {
         e.preventDefault()
         setError("")
@@ -56,17 +58,25 @@ const Register = () => {
             street:street,
             city:city,
             state:state,
-            country:country
+            country:country,
+            token:token
         }
 
         axios.post(`http://localhost:3001/user`, data)
             .then(function (response){
                 console.log(response.data)
-            }).catch(function (error){
+            })
+            .then(response => {
+                localStorage.setItem('token', response.data.token);
+            })
+            .catch(function (error){
             // aqui temos acesso ao erro, quando alguma coisa inesperada acontece:
             console.log(error)
         })
     }
+
+    localStorage.removeItem('token');
+
 
     //Validacao do RG digitado
     const validaRg = (rg) => {

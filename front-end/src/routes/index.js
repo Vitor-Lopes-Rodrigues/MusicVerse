@@ -5,11 +5,14 @@ import Login from "../pages/login";
 import About from "../pages/about";
 import Post from "../pages/post";
 import Profile from "../pages/profile";
+import Navbar from "../components/navbar";
+import Footer from "../components/footer";
 
 const MainRoutes = () => {
     return(
         <div className="App">
             <BrowserRouter>
+                <Navbar/>
                 <div className="container">
                     <Routes>
                         <Route path="/" element={<Home />} />
@@ -20,6 +23,7 @@ const MainRoutes = () => {
                         <Route path={"/profile"} element={<Profile />} />
                     </Routes>
                 </div>
+                <Footer/>
             </BrowserRouter>
         </div>
     )
