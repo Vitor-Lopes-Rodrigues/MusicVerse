@@ -1,6 +1,31 @@
 const database = require('../models')
+const jsonwebtoken = require("jsonwebtoken")
+
 
 class UsersController {
+
+    //Login
+    static async login(req, res){
+        try{
+            //Buscando usuário
+            const user = await database.Users.findOne({
+                where: { email:String(req.body.email), password:String(req.body.password) }
+            })
+
+            //Validando usuário
+            if(!user) return res.status(401).json("Usuário ou senha incorretos!")
+
+            //Gerando token
+            const token = jsonwebtoken.sign(
+                { user: JSON.stringify(user) },
+                'PRIVATE_KEY',
+                { expiresIn: '60m' }
+            )
+            return res.status(200).json({ data: { user, token } })
+        } catch (error) {
+            return res.status(500).json(error.message)
+        }
+    }
 
     //Buscar todos os usuarios
     static async getAllUsers(req, res){
