@@ -1,7 +1,6 @@
 const database = require('../models')
 const jsonwebtoken = require("jsonwebtoken")
 
-
 class UsersController {
 
     //Login
