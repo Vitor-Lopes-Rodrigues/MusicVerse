@@ -1,14 +1,14 @@
 const { Router } = require('express')
 const UsersController = require('../controllers/UsersController')
-
+const auth = require("../config/auth")
 const router = Router()
 
 router
-    .get('/users', UsersController.getAllUsers)
-    .get('/user/:id', UsersController.getUser)
-    .post('/user', UsersController.saveUser)
-    .put('/user/:id', UsersController.updateUser)
-    .delete('/user/:id', UsersController.deleteUser)
+    .get('/users', auth, UsersController.getAllUsers)
+    .get('/user/:id', auth, UsersController.getUser)
+    .post('/user', auth, UsersController.saveUser)
+    .put('/user/:id', auth, UsersController.updateUser)
+    .delete('/user/:id', auth, UsersController.deleteUser)
     .post('/login', UsersController.login)
 
 module.exports = router
