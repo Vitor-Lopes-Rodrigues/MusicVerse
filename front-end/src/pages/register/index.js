@@ -23,7 +23,7 @@ const Register = () => {
     const [state,setState] = useState("");
     const [country,setCountry] = useState("");
 
-    const token = localStorage.getItem('token');
+
 
     const handleSubmit =  async (e) => {
         e.preventDefault()
@@ -58,24 +58,18 @@ const Register = () => {
             street:street,
             city:city,
             state:state,
-            country:country,
-            token:token
+            country:country
         }
 
         axios.post(`http://localhost:3001/user`, data)
             .then(function (response){
                 console.log(response.data)
             })
-            .then(response => {
-                localStorage.setItem('token', response.data.token);
-            })
             .catch(function (error){
             // aqui temos acesso ao erro, quando alguma coisa inesperada acontece:
             console.log(error)
         })
     }
-
-    localStorage.removeItem('token');
 
 
     //Validacao do RG digitado
@@ -127,68 +121,75 @@ const Register = () => {
             .replace(/(\d{3})(\d{1,2})/, "$1-$2")
             .replace(/(-\d{2})\d+?$/, "$1");
     };
+    const phoneMask = (value) => {
+        if (!value) return ""
+        value = value.replace(/\D/g,'')
+        value = value.replace(/(\d{2})(\d)/,"($1) $2")
+        value = value.replace(/(\d)(\d{4})$/,"$1-$2")
+        return value
+    }
 
-    return(
-        <div className={styles.register}>
-            <h1>Cadastre-se para postar</h1>
-            <p>Crie seu usuário e compartilhe o seu SOM!</p>
-            <form onSubmit={handleSubmit}>
-                <label>
-                    <span>Nome:</span>
-                    <input type="text" name="displayName" required placeholder="Nome do usuário" value={displayName} onChange={(e) => setDisplayName(e.target.value)}/>
-                </label>
-                <label>
-                    <span>Genero:</span>
-                    <input type="radio" name="setGender" required placeholder="Genero" value={gender} onChange={(e) => setGender(e.target.value)}/>M
-                    <input type="radio" name="setGender" required placeholder="Genero" value={gender} onChange={(e) => setGender(e.target.value)}/>F
-                </label>
-                <label>
-                    <span>CPF:</span>
-                    <input type="text" name="cpf" required placeholder="CPF" value={cpf} onChange={(e) => setCpf(maskCPF(e.target.value))}/>
-                </label>
-                <label>
-                    <span>RG:</span>
-                    <input type="text" name="rg" required placeholder="RG" value={rg}  maxLength="9" onChange={(e) => setRg(e.target.value)}/>
-                </label>
-                <label>
-                    <span>Telefone:</span>
-                    <input type="text" name="phone" required placeholder="Telefone" value={phone}  onChange={(e) => setPhone(e.target.value)}/>
-                </label>
-                <label>
-                    <span>Aniversário:</span>
-                    <input type="date" name="birthDate" required placeholder="Aniversário" value={birthDate} onChange={(e) => setBirthDate(e.target.value)}/>
-                </label>
-                <label>
-                    <span>Email:</span>
-                    <input type="email" name="displayName" required placeholder="E-mail do usuário" value={email} onChange={(e) => setEmail(e.target.value)}/>
-                </label>
-                <label>
-                    <span>Senha:</span>
-                    <input type="password" name="password" required placeholder="Insira sua senha" value={password} onChange={(e) => setPassword(e.target.value)}/>
-                </label>
-                <label>
-                    <span>CEP:</span>
-                    <input type="number" name="cep" required placeholder="Insira o seu CEP" value={cep} onChange={(e) => setCep(e.target.value)}/>
-                </label>
-                <label>
-                    <span>Rua:</span>
-                    <input type="text" name="street" required placeholder="Insira sua Rua" value={street} onChange={(e) => setStreet(e.target.value)}/>
-                </label>
-                <label>
-                    <span>Cidade:</span>
-                    <input type="text" name="city" required placeholder="Insira sua cidade" value={city} onChange={(e) => setCity(e.target.value)}/>
-                </label>
-                <label>
-                    <span>Estado:</span>
-                    <input type="text" name="state" required placeholder="Insira seu estado" value={state} onChange={(e) => setState(e.target.value)}/>
-                </label>
-                <label>
-                    <span>Continente</span>
-                    <input type="text" name="country" required placeholder="Insira seu continente" value={country} onChange={(e) => setCountry(e.target.value)}/>
-                </label>
-                <Button name={'Cadastrar'}/>
-            </form>
-        </div>
+        return(
+            <div className={styles.register}>
+                <h1>Cadastre-se para postar</h1>
+                <p>Crie seu usuário e compartilhe o seu SOM!</p>
+                <form onSubmit={handleSubmit}>
+                    <label>
+                        <span>Nome:</span>
+                        <input type="text" name="displayName" required placeholder="Nome do usuário" value={displayName} onChange={(e) => setDisplayName(e.target.value)}/>
+                    </label>
+                    <label>
+                        <span>Genero:</span>
+                        <input  type="radio" name="setGender" required placeholder="Genero" value={gender} onChange={(e) => setGender(e.target.value)}/>M
+                        <input  type="radio" name="setGender" required placeholder="Genero" value={gender} onChange={(e) => setGender(e.target.value)}/>F
+                    </label>
+                    <label>
+                        <span>CPF:</span>
+                        <input type="text" name="cpf" required placeholder="CPF" value={cpf} onChange={(e) => setCpf(maskCPF(e.target.value))}/>
+                    </label>
+                    <label>
+                        <span>RG:</span>
+                        <input type="text" name="rg" required placeholder="RG" value={rg}  maxLength="9" onChange={(e) => setRg(e.target.value)}/>
+                    </label>
+                    <label>
+                        <span>Telefone:</span>
+                        <input type="tel" name="phone" maxlength="15" required placeholder="Telefone" value={phone}  onChange={(e) => setPhone(phoneMask(e.target.value))}/>
+                    </label>
+                    <label>
+                        <span>Aniversário:</span>
+                        <input type="date" name="birthDate" required placeholder="Aniversário" value={birthDate} onChange={(e) => setBirthDate(e.target.value)}/>
+                    </label>
+                    <label>
+                        <span>Email:</span>
+                        <input type="email" name="displayName" required placeholder="E-mail do usuário exemplo@gmail.com" value={email} onChange={(e) => setEmail(e.target.value)}/>
+                    </label>
+                    <label>
+                        <span>Senha:</span>
+                        <input type="password" name="password" required placeholder="Insira sua senha" value={password} onChange={(e) => setPassword(e.target.value)}/>
+                    </label>
+                    <label>
+                        <span>CEP:</span>
+                        <input type="number" name="cep" required placeholder="Insira o seu CEP" value={cep} onChange={(e) => setCep(e.target.value)}/>
+                    </label>
+                    <label>
+                        <span>Rua:</span>
+                        <input type="text" name="street" required placeholder="Insira sua Rua" value={street} onChange={(e) => setStreet(e.target.value)}/>
+                    </label>
+                    <label>
+                        <span>Cidade:</span>
+                        <input type="text" name="city" required placeholder="Insira sua cidade" value={city} onChange={(e) => setCity(e.target.value)}/>
+                    </label>
+                    <label>
+                        <span>Estado:</span>
+                        <input type="text" name="state" required placeholder="Insira seu estado" value={state} onChange={(e) => setState(e.target.value)}/>
+                    </label>
+                    <label>
+                        <span>Continente</span>
+                        <input type="text" name="country" required placeholder="Insira seu continente" value={country} onChange={(e) => setCountry(e.target.value)}/>
+                    </label>
+                    <Button name={'Cadastrar'}/>
+                </form>
+            </div>
     )
 }
 

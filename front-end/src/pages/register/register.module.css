@@ -4,3 +4,7 @@
 .register p {
     color: #aaa;
 }
+
+#gender{
+    display: flex;
+}

@@ -10,6 +10,8 @@ const Login = () => {
     const [password, setPassword] = useState("")
     const [error, setError] = useState("")
 
+    const token = localStorage.getItem('token');
+
     //Criando submit de formulário
     const handleSubmit =  async (e) => {
         e.preventDefault()
@@ -18,18 +20,27 @@ const Login = () => {
 
         const data = {
             email: email,
-            password: password
+            password: password,
+            token:token
         }
 
         // Login
-        axios.post(`https://${process.env.REACT_APP_LINK_API}/user`, data)
+        axios.get(`http://localhost:3001/user`, data)
             .then(function (response){
-                Navigate('/')
-            }).catch(function (error){
-            // aqui temos acesso ao erro, quando alguma coisa inesperada acontece:
-            console.log(error)
-        })
+                console.log(response.data)
+                Navigate("/")
+            })
+            .then(response => {
+                localStorage.setItem('token', response.data.token);
+            })
+            .catch(function (error){
+                // aqui temos acesso ao erro, quando alguma coisa inesperada acontece:
+                console.log(error)
+            })
     }
+
+    //Aqui serve para remover o token, bom para logout
+    // localStorage.removeItem('token');
 
     return (
         <div className={styles.login}>
