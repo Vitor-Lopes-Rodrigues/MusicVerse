@@ -71,6 +71,35 @@ const Register = () => {
             })
     }
 
+    //API de busca de CEP via number
+    const buscarCep = async (cepRecebido) => {
+        setCep(cepRecebido)
+        if (validaCep(cepRecebido)) {
+            let url = `https://viacep.com.br/ws/${cepRecebido}/json/`
+
+            // const resp = await fetch(url, {mode:'no-cors'})
+            const resp = await fetch(url, {
+                headers: {
+                    'Access-Control-Allow-Origin': '*',
+                    'content-type': 'aplication/json'
+                }
+            })
+            const data = await resp.json()
+
+            setStreet(data.logradouro)
+            setCity(data.localidade)
+            setState(data.uf)
+            document.getElementById("input-number").focus()
+        }
+    }
+    //Validacao do CEP digitado
+    const validaCep = (cepRecebido) => {
+        cepRecebido = cepRecebido.replace(/[^0-9]/gi, "");
+        return cepRecebido.length === 8
+    }
+
+
+
 
     //Validacao do RG digitado
     const validaRg = (rg) => {
@@ -139,11 +168,11 @@ const Register = () => {
                     <span>Nome:</span>
                     <input type="text" name="displayName" required placeholder="Nome do usuário" value={displayName} onChange={(e) => setDisplayName(e.target.value)}/>
                 </label>
-                <label>
-                    <span>Genero:</span>
-                    <input  type="radio" name="setGender" required placeholder="Genero" value={gender} onChange={(e) => setGender(e.target.value)}/>M
-                    <input  type="radio" name="setGender" required placeholder="Genero" value={gender} onChange={(e) => setGender(e.target.value)}/>F
-                </label>
+                    <label className={styles.register}>
+                        <span>Genero:</span>
+                        <input  type="radio" name="setGender" required placeholder="Genero" value={gender} onChange={(e) => setGender(e.target.value)}/>M
+                        <input  type="radio" name="setGender" required placeholder="Genero" value={gender} onChange={(e) => setGender(e.target.value)}/>F
+                    </label>
                 <label>
                     <span>CPF:</span>
                     <input type="text" name="cpf" required placeholder="CPF" value={cpf} onChange={(e) => setCpf(maskCPF(e.target.value))}/>
@@ -170,7 +199,7 @@ const Register = () => {
                 </label>
                 <label>
                     <span>CEP:</span>
-                    <input type="number" name="cep" required placeholder="Insira o seu CEP" value={cep} onChange={(e) => setCep(e.target.value)}/>
+                    <input type="number" name="cep" required placeholder="Insira o seu CEP" value={cep} onChange={(e) => buscarCep(e.target.value)}/>
                 </label>
                 <label>
                     <span>Rua:</span>
