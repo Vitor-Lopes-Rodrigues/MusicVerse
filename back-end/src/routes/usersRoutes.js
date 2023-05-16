@@ -6,7 +6,7 @@ const router = Router()
 router
     .get('/users', auth, UsersController.getAllUsers)
     .get('/user/:id', auth, UsersController.getUser)
-    .post('/user', auth, UsersController.saveUser)
+    .post('/user', UsersController.saveUser)
     .put('/user/:id', auth, UsersController.updateUser)
     .delete('/user/:id', auth, UsersController.deleteUser)
     .post('/login', UsersController.login)

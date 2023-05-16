@@ -1,5 +1,6 @@
 import React, {useState} from "react"
 import styles from "./post.module.css"
+import Navbar from "../../components/navbar";
 
 const Post = () => {
 
@@ -15,6 +16,7 @@ const Post = () => {
 
     return(
         <div className={styles.create_post}>
+            <Navbar/>
             <h2>Criar Post</h2>
             <p>Escreva tudo que possível sobre o seu gosto Músical, além claro, não esqueça de compartilhar os seus shows</p>
             <form onSubmit={handleSubmit}>

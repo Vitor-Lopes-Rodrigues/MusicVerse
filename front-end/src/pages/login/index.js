@@ -1,9 +1,11 @@
 import React, { useState } from "react";
-import {Navigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import axios from "axios";
 import styles from "./login.module.css";
 
 const Login = () => {
+    // Navigate
+    const navigate = useNavigate()
 
     //Criando constantes para nome,email,senha,cofirmacaoSenha,errorIndicados
     const [email, setEmail] = useState("")
@@ -25,10 +27,10 @@ const Login = () => {
         }
 
         // Login
-        axios.get(`http://localhost:3001/user`, data)
+        axios.post(`http://localhost:3001/login`, data)
             .then(function (response){
                 console.log(response.data)
-                Navigate("/")
+                navigate("/")
             })
             .then(response => {
                 localStorage.setItem('token', response.data.token);

@@ -2,8 +2,11 @@ import React, { useState } from "react";
 import styles from "../../pages/register/register.module.css";
 import axios from "axios";
 import Button from "../../components/button";
+import {useNavigate} from "react-router-dom";
 
 const Register = () => {
+    // Navigate
+    const navigate = useNavigate()
 
     // User
     const [displayName, setDisplayName] = useState("");
@@ -49,9 +52,9 @@ const Register = () => {
             name: displayName,
             birthDate: birthDate,
             gender:gender,
-            cpf:cpf,
+            cpf:cpf.replaceAll(".", "").replaceAll("-", ""),
             rg:rg,
-            user:phone,
+            user:phone.replaceAll("-","").replaceAll("(","").replaceAll(")",""),
             email:email,
             password:password,
             cep:cep,
@@ -64,11 +67,13 @@ const Register = () => {
         axios.post(`http://localhost:3001/user`, data)
             .then(function (response){
                 console.log(response.data)
+                navigate('/login')
             })
             .catch(function (error){
                 // aqui temos acesso ao erro, quando alguma coisa inesperada acontece:
                 console.log(error)
             })
+
     }
 
     //API de busca de CEP via number
@@ -89,6 +94,7 @@ const Register = () => {
             setStreet(data.logradouro)
             setCity(data.localidade)
             setState(data.uf)
+            setCountry('Brasil')
             document.getElementById("input-number").focus()
         }
     }
@@ -170,8 +176,9 @@ const Register = () => {
                 </label>
                     <label className={styles.register}>
                         <span>Genero:</span>
-                        <input  type="radio" name="setGender" required placeholder="Genero" value={gender} onChange={(e) => setGender(e.target.value)}/>M
-                        <input  type="radio" name="setGender" required placeholder="Genero" value={gender} onChange={(e) => setGender(e.target.value)}/>F
+                        <input  type="radio" name="setGender" required placeholder="Genero" value={gender} onChange={(e) => setGender("Male")}/>Homem
+                        <input  type="radio" name="setGender" required placeholder="Genero" value={gender} onChange={(e) => setGender("Femile")}/>Mulher
+                        <input  type="radio" name="setGender" required placeholder="Genero" value={gender} onChange={(e) => setGender("Others")}/>Outros
                     </label>
                 <label>
                     <span>CPF:</span>
@@ -214,7 +221,7 @@ const Register = () => {
                     <input type="text" name="state" required placeholder="Insira seu estado" value={state} onChange={(e) => setState(e.target.value)}/>
                 </label>
                 <label>
-                    <span>Continente</span>
+                    <span>País</span>
                     <input type="text" name="country" required placeholder="Insira seu continente" value={country} onChange={(e) => setCountry(e.target.value)}/>
                 </label>
                 <Button name={'Cadastrar'}/>
