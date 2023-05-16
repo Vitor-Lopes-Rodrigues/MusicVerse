@@ -1,4 +1,4 @@
-```Faculdade São Judas Tadeus (USJT)```
+```Faculdade São Judas Tadeus(USJT)```
 # MusicVerse
 <h1 align="center"> Projeto USJT da UC's "Sistemas distribuidos e mobile" & "Usabilidade,desenvolvimento web, mobile e jogos" </h1>
 
