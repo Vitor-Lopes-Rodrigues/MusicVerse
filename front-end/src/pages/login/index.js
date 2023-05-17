@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import {useNavigate} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import axios from "axios";
 import styles from "./login.module.css";
 
@@ -61,6 +61,7 @@ const Login = () => {
                 </label>
                 <button className="btn">Entrar</button>
                 {error && <p className="error">{error}</p>}
+                <p>Não tem login? <Link to={"/register"}>Cadastre-se</Link></p>
             </form>
         </div>
     )

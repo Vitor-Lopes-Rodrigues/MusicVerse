@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styles from "../../pages/register/register.module.css";
 import axios from "axios";
 import Button from "../../components/button";
-import {useNavigate} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 
 const Register = () => {
     // Navigate
@@ -225,6 +225,7 @@ const Register = () => {
                     <input type="text" name="country" required placeholder="Insira seu continente" value={country} onChange={(e) => setCountry(e.target.value)}/>
                 </label>
                 <Button name={'Cadastrar'}/>
+                <p>Já tem conta? <Link to={"/login"}>Faça login</Link></p>
             </form>
         </div>
     )
