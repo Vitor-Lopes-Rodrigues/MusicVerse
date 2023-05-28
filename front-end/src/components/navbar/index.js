@@ -9,6 +9,8 @@ const Navbar = () => {
                 <span>MusicVerse</span>
             </NavLink>
             <ul className={styles.links_list}>
+                <li><b>{localStorage.getItem('userName')}</b></li>
+                <li>&nbsp;&nbsp;</li>
                 <li>
                     <NavLink to="/" className={({isActive}) => (isActive ?  styles.active : "" )}>Home</NavLink>
                 </li>

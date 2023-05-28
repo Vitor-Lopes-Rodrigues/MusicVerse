@@ -1,0 +1,48 @@
+.interaction-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.button-container {
+    display: flex;
+    margin-top: 8px;
+}
+
+.like-button,
+.comment-button {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 8px 16px;
+    border-radius: 4px;
+    margin-right: 8px;
+}
+
+.like-button:hover,
+.comment-button:hover {
+    background-color: #f0f0f0;
+}
+
+.like-button.liked {
+    background-color: #00cc00;
+    color: #fff;
+}
+
+.icon {
+    margin-right: 8px;
+}
+
+.likes-count {
+    margin-top: 8px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.comment-button:last-child {
+    margin-right: 0;
+}

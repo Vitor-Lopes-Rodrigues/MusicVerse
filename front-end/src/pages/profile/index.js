@@ -1,7 +1,21 @@
-import React from "react";
+import React, {useEffect} from "react";
 import Navbar from "../../components/navbar";
+import {useNavigate} from "react-router-dom";
 
 const Profile = () => {
+
+    const navigate = useNavigate()
+
+    // Verificar se o usuario está logado
+    useEffect(() => {
+        const loggedInUser = localStorage.getItem('user')
+        if (loggedInUser) {
+            console.log(loggedInUser)
+        } else {
+            navigate("/login")
+        }
+    }, [navigate]);
+
     return(
         <div>
             <Navbar/>

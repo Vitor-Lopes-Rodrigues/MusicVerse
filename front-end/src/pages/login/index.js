@@ -12,8 +12,6 @@ const Login = () => {
     const [password, setPassword] = useState("")
     const [error, setError] = useState("")
 
-    const token = localStorage.getItem('token');
-
     //Criando submit de formulário
     const handleSubmit =  async (e) => {
         e.preventDefault()
@@ -22,18 +20,18 @@ const Login = () => {
 
         const data = {
             email: email,
-            password: password,
-            token:token
+            password: password
         }
 
         // Login
         axios.post(`http://localhost:3001/login`, data)
             .then(function (response){
-                console.log(response.data)
+                localStorage.setItem('user', response.data)
+                localStorage.setItem('userId', response.data.data.user.id)
+                localStorage.setItem('userName', response.data.data.user.name)
+                localStorage.setItem('userToken', response.data.data.token)
+                console.log(response.data.data.user.id)
                 navigate("/")
-            })
-            .then(response => {
-                localStorage.setItem('token', response.data.token);
             })
             .catch(function (error){
                 // aqui temos acesso ao erro, quando alguma coisa inesperada acontece:

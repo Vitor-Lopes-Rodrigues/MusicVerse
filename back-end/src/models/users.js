@@ -11,10 +11,16 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       this.hasMany(models.Followers, {
-        foreignKey: 'followerId'
+        foreignKey: 'follower_id'
       })
       this.hasMany(models.Followers, {
-        foreignKey: 'followerId'
+        foreignKey: 'followed_Id'
+      })
+      this.hasMany(models.Posts, {
+        foreignKey: 'user_id'
+      })
+      this.hasMany(models.Likes, {
+        foreignKey: 'user_id'
       })
     }
   }
