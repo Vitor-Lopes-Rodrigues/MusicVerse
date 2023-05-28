@@ -27,9 +27,10 @@ const Login = () => {
         axios.post(`http://localhost:3001/login`, data)
             .then(function (response){
                 localStorage.setItem('user', response.data)
+                localStorage.setItem('userId', response.data.data.user.id)
                 localStorage.setItem('userName', response.data.data.user.name)
                 localStorage.setItem('userToken', response.data.data.token)
-                console.log(response.data.data.user)
+                console.log(response.data.data.user.id)
                 navigate("/")
             })
             .catch(function (error){

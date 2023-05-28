@@ -5,5 +5,6 @@ const router = Router()
 
 router
     .get('/posts', auth, PostsController.getAllPosts)
+    .post('/post', auth, PostsController.saveUser)
 
 module.exports = router
