@@ -23,6 +23,9 @@ module.exports = {
         type: Sequelize.INTEGER,
         references: { model: 'Users', key: 'id' }
       },
+      likes: {
+        type: Sequelize.INTEGER
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

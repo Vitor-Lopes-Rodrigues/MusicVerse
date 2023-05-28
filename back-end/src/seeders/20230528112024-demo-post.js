@@ -9,6 +9,7 @@ module.exports = {
         description: "Após anos de espera, pude realizar o sonho de visitar o rio de janeiro.",
         image: "imagem_trompete.jpg",
         user_id: 1,
+        likes: 10,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -17,6 +18,7 @@ module.exports = {
         description: "Após anos de espera, pude comprar uma guitarra nova.",
         image: "imagem_guitarra.jpg",
         user_id: 2,
+        likes: 2,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -25,6 +27,7 @@ module.exports = {
         description: "Após anos de espera, gostaria de vender esse teclado novinho.",
         image: "imagem_teclado.jpg",
         user_id: 3,
+        likes: 0,
         createdAt: new Date(),
         updatedAt: new Date()
       }

@@ -1,11 +1,15 @@
 import React, {useEffect, useState} from "react"
-import {Link, useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import styles from "./home.module.css"
 import Navbar from "../../components/navbar";
+import Post from "../../components/post";
+import axios from "axios";
 
 const Home = () => {
 
     const navigate = useNavigate()
+
+    const [posts, setPosts] = useState([])
 
     // Verificar se o usuario está logado
     useEffect(() => {
@@ -17,8 +21,24 @@ const Home = () => {
         }
     }, [navigate]);
 
-    // const [query, setQuery] = useState("")
-    const [posts] = useState([])
+    // Carregando posts
+    useEffect(() => {
+
+        const config = {
+            headers: { Authorization: `Bearer ${localStorage.getItem('userToken')}` }
+        };
+
+        // Posts
+        axios.get(`http://localhost:3001/posts`, config)
+            .then(function (response){
+                setPosts(response.data)
+                console.log(response.data)
+            })
+            .catch(function (error){
+                // aqui temos acesso ao erro
+                console.log(error)
+            })
+    }, []);
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -33,15 +53,15 @@ const Home = () => {
                     <input type="text" placeholder="ou busque pelo perfil desejado" onChange={(e) => e.target.value}/>
                     <button className="btn btn-dark">Pesquisar</button>
                 </form>
-                <div>
-                    <h1>Posts...</h1>
-                    {posts && posts.length === 0 &&(
-                        <div className={styles.nopost}>
-                            <p>Não foram encontrados posts</p>
-                            <Link to="/post" className="btn">Criar primeiro post</Link>
-                        </div>
-                    )}
-                </div>
+                {posts.map((post, index) => (
+                    <Post
+                        key={index}
+                        userId={post.user_id}
+                        tittle={post.tittle}
+                        description={post.description}
+                        image={post.image}
+                    />
+                ))}
             </div>
         </>
     )
