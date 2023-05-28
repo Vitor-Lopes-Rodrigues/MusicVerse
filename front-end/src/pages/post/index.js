@@ -1,8 +1,22 @@
-import React, {useState} from "react"
+import React, {useEffect, useState} from "react"
 import styles from "./post.module.css"
 import Navbar from "../../components/navbar";
+import {useNavigate} from "react-router-dom";
 
 const Post = () => {
+
+    const navigate = useNavigate()
+
+    // Verificar se o usuario está logado
+    useEffect(() => {
+        const loggedInUser = localStorage.getItem("user");
+        if (loggedInUser) {
+            const foundUser = JSON.parse(loggedInUser);
+            console.log(foundUser)
+        } else {
+            navigate("/login")
+        }
+    }, [navigate]);
 
     //Criando constantes de states
     const [title,setTitle] = useState("");

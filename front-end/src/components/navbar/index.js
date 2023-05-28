@@ -2,13 +2,15 @@ import React from "react";
 import styles from "./navbar.module.css"
 import {NavLink} from "react-router-dom"
 
-const Navbar = () => {
+const Navbar = ({name}) => {
     return(
         <nav className={styles.navbar}>
             <NavLink to="/"className={styles.brand}>
                 <span>MusicVerse</span>
             </NavLink>
             <ul className={styles.links_list}>
+                <li><b>{name}</b></li>
+                <li>&nbsp;&nbsp;</li>
                 <li>
                     <NavLink to="/" className={({isActive}) => (isActive ?  styles.active : "" )}>Home</NavLink>
                 </li>

@@ -5,7 +5,6 @@ import Login from "../pages/login";
 import About from "../pages/about";
 import Post from "../pages/post";
 import Profile from "../pages/profile";
-import Navbar from "../components/navbar";
 import Footer from "../components/footer";
 
 const MainRoutes = () => {
