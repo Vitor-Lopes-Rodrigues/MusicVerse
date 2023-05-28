@@ -26,11 +26,16 @@ const Navbar = () => {
                 <li>
                     <NavLink to="/about"className={({isActive}) => (isActive ?  styles.active : "" )}>Sobre</NavLink>
                 </li>
+                <li className={styles.dropdown}>
+                    <span>Mais</span>
+                <ul className={styles.dropdown_content}>
                 <li>
                     <NavLink to="/profile" className={({isActive}) => (isActive ?  styles.active : "" )}>Perfil</NavLink>
                 </li>
                 <li>
                     <NavLink to="/login" className={({isActive}) => (isActive ?  styles.active : "" )}>Logout</NavLink>
+                </li>
+                </ul>
                 </li>
             </ul>
         </nav>

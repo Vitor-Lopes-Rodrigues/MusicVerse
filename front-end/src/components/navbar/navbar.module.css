@@ -30,3 +30,40 @@
     background-color: #000;
     color: #fff;
 }
+
+/* Estilos para o dropdown */
+.dropdown {
+    position: relative;
+}
+
+.dropdown:hover .dropdown_content {
+    display: block;
+}
+
+.dropdown_content {
+    display: none;
+    position: absolute;
+    top: 110%;
+    left: 0;
+    background-color: #f9f9f9;
+    min-width: 95px;
+    padding: 1px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+}
+
+.dropdown_content li {
+    margin-bottom: 8px;
+}
+
+.dropdown_content li:last-child {
+    margin-bottom: 0;
+}
+
+.dropdown_content a {
+    color: #333;
+    text-decoration: none;
+}
+
+.dropdown_content a:hover {
+    text-decoration: underline;
+}

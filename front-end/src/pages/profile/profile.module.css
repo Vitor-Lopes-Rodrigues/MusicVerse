@@ -1,0 +1,44 @@
+.profile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.profile-image img {
+    width: 15px;
+    height: 25px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 20px;
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-name {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.profile-location {
+    font-size: 18px;
+}
+.profilePhone{
+    font-size: 18px;
+}
+.profileGender{
+    font-size: 18px;
+}
+.profileEmail{
+    font-size: 18px;
+}
+.profileStates{
+    font-size: 18px;
+}
+.profileCounty{
+    font-size: 18px;
+}
+

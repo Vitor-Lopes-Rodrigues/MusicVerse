@@ -25,6 +25,7 @@ const Register = () => {
     const [city,setCity] = useState("");
     const [state,setState] = useState("");
     const [country,setCountry] = useState("");
+    const [image, setImage] = useState("");
 
 
 
@@ -73,7 +74,6 @@ const Register = () => {
                 // aqui temos acesso ao erro, quando alguma coisa inesperada acontece:
                 console.log(error)
             })
-
     }
 
     //API de busca de CEP via number
@@ -203,6 +203,19 @@ const Register = () => {
                 <label>
                     <span>Senha:</span>
                     <input type="password" name="password" required placeholder="Insira sua senha" value={password} onChange={(e) => setPassword(e.target.value)}/>
+                </label>
+                <label>
+                <input
+                    type="file"
+                    name="image"
+                    required
+                    placeholder="Insira uma imagem sobre música em geral"
+                    onChange={(e) => {
+                        const file = e.target.files[0];
+                        const fileName = file.name;
+                        setImage(fileName);
+                    }}
+                />
                 </label>
                 <label>
                     <span>CEP:</span>
