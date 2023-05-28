@@ -5,6 +5,9 @@ const router = Router()
 
 router
     .get('/posts', auth, PostsController.getAllPosts)
-    .post('/post', auth, PostsController.saveUser)
+    .get('/post/:id', auth, PostsController.getPost)
+    .post('/post', auth, PostsController.savePost)
+    .put('/post/:id', auth, PostsController.updatePost)
+    .delete('/post/:id', auth, PostsController.deletePost)
 
 module.exports = router

@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
+import Interaction from "../interaction";
 
 const Post = ({userId, tittle, description, image}) => {
 
@@ -31,6 +32,7 @@ const Post = ({userId, tittle, description, image}) => {
             <p>{description}</p>
             <img src={require(`../../images/post/${image}`)} alt="Teste" width="600" height="600"/>
             <br/>
+            <Interaction />
             <hr width="50%" align="center" />
         </>
     )

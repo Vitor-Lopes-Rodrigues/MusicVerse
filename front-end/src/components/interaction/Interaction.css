@@ -1,0 +1,41 @@
+.interaction-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.like-button,
+.comment-button {
+    display: inline-block;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 50%;
+    padding: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    background-color: #f7f8f9;
+    color: #777;
+}
+
+.like-button:hover,
+.like-button:focus {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.like-button.liked {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.comment-button:hover,
+.comment-button:focus {
+    background-color: #6c757d;
+    color: #fff;
+}
+
+.like-button svg,
+.comment-button svg {
+    margin-right: 8px;
+}
