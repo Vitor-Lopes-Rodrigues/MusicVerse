@@ -11,6 +11,7 @@ const Home = () => {
 
     const [posts, setPosts] = useState([])
 
+
     // Verificar se o usuario está logado
     useEffect(() => {
         const loggedInUser = localStorage.getItem('user')
@@ -38,6 +39,7 @@ const Home = () => {
                 // aqui temos acesso ao erro
                 console.log(error)
             })
+
     }, []);
 
     const handleSubmit = (e) => {
@@ -58,7 +60,7 @@ const Home = () => {
                         key={index}
                         postId={post.id}
                         userId={post.user_id}
-                        tittle={post.tittle}
+                        title={post.title}
                         description={post.description}
                         image={post.image}
                     />

@@ -1,40 +1,63 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Interaction from "../interaction";
+import "./Post.css";
 
-const Post = ({postId, userId, tittle, description, image}) => {
+const Post = ({ postId, userId, title, description, image }) => {
+    const [user, setUser] = useState("");
+    const [isMyPost, setIsMyPost] = useState(false);
 
-    const [user, setUser] = useState("")
-
-    // Carregando posts
     useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const config = {
+                    headers: { Authorization: `Bearer ${localStorage.getItem("userToken")}` },
+                };
 
-        const config = {
-            headers: { Authorization: `Bearer ${localStorage.getItem('userToken')}` }
+                const response = await axios.get(`http://localhost:3001/user/${userId}`, config);
+                setUser(response.data);
+            } catch (error) {
+                console.log(error);
+            }
         };
 
-        // Posts
-        axios.get(`http://localhost:3001/user/${userId}`, config)
-            .then(function (response){
-                setUser(response.data)
-                console.log(response.data)
-            })
-            .catch(function (error){
-                // aqui temos acesso ao erro
-                console.log(error)
-            })
-    }, []);
+        fetchData();
 
-    return(
-        <>
-            <h2>{user.name}</h2>
-            <h2>{tittle}</h2>
-            <p>{description}</p>
-            <img src={require(`../../images/post/${image}`)} alt="Teste" width="600" height="600"/>
-            <br/>
-            <Interaction postId={postId}/>
-            <hr width="50%" align="center" />
-        </>
-    )
-}
+        setIsMyPost(userId === parseInt(localStorage.getItem("userId")));
+
+    }, [userId]);
+
+    const handleEdit = () => {
+        // Lógica para editar o post
+    };
+
+    const handleDelete = () => {
+        // Lógica para excluir o post
+    };
+
+    return (
+        <div className="post">
+            {isMyPost && (
+                <div className="post-options">
+                    <button className="post-edit-button" onClick={handleEdit}>
+                        Editar
+                    </button>
+                    <button className="post-delete-button" onClick={handleDelete}>
+                        Excluir
+                    </button>
+                </div>
+            )}
+            <div className="post-header">
+                <img className="post-avatar" src={user.avatar} alt="User Avatar" />
+                <h2 className="post-username">{user.name}</h2>
+            </div>
+            <h2 className="post-title">{title}</h2>
+            <p className="post-description">{description}</p>
+            <img className="post-image" src={require(`../../images/post/${image}`)} alt="Post Image" />
+            <Interaction postId={postId} />
+            <hr className="post-divider" />
+        </div>
+    );
+};
+
 export default Post;

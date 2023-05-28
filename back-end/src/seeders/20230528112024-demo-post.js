@@ -5,7 +5,7 @@ module.exports = {
   async up (queryInterface, Sequelize) {
     await queryInterface.bulkInsert('Posts', [
       {
-        tittle: "Tocando trompete no Rio de janeiro...",
+        title: "Tocando trompete no Rio de janeiro...",
         description: "Após anos de espera, pude realizar o sonho de visitar o rio de janeiro.",
         image: "imagem_trompete.jpg",
         user_id: 1,
@@ -13,7 +13,7 @@ module.exports = {
         updatedAt: new Date()
       },
       {
-        tittle: "Comprei uma guitarra nova...",
+        title: "Comprei uma guitarra nova...",
         description: "Após anos de espera, pude comprar uma guitarra nova.",
         image: "imagem_guitarra.jpg",
         user_id: 2,
@@ -21,7 +21,7 @@ module.exports = {
         updatedAt: new Date()
       },
       {
-        tittle: "Quero vender esse teclado...",
+        title: "Quero vender esse teclado...",
         description: "Após anos de espera, gostaria de vender esse teclado novinho.",
         image: "imagem_teclado.jpg",
         user_id: 3,
