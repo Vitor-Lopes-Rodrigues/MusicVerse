@@ -8,10 +8,9 @@ const Profile = () => {
 
     // Verificar se o usuario está logado
     useEffect(() => {
-        const loggedInUser = localStorage.getItem("user");
+        const loggedInUser = localStorage.getItem('user')
         if (loggedInUser) {
-            const foundUser = JSON.parse(loggedInUser);
-            console.log(foundUser)
+            console.log(loggedInUser)
         } else {
             navigate("/login")
         }

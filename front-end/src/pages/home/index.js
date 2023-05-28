@@ -5,15 +5,12 @@ import Navbar from "../../components/navbar";
 
 const Home = () => {
 
-    const [user, setUser] = useState("")
-
     const navigate = useNavigate()
 
     // Verificar se o usuario está logado
     useEffect(() => {
         const loggedInUser = localStorage.getItem('user')
         if (loggedInUser) {
-            setUser(loggedInUser)
             console.log(loggedInUser)
         } else {
             navigate("/login")
@@ -29,7 +26,7 @@ const Home = () => {
 
     return(
         <>
-            <Navbar name={localStorage.getItem('userName')}/>
+            <Navbar/>
             <div className={styles.home}>
                 <h1>Veja os posts mais recentes</h1>
                 <form onSubmit={handleSubmit} className={styles.search_form}>
