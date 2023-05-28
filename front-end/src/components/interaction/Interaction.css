@@ -1,41 +1,48 @@
 .interaction-container {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 10px;
+    margin-top: 20px;
+}
+
+.button-container {
+    display: flex;
+    margin-top: 8px;
 }
 
 .like-button,
 .comment-button {
-    display: inline-block;
+    display: flex;
     align-items: center;
-    justify-content: center;
+    background-color: #fff;
     border: none;
-    border-radius: 50%;
-    padding: 16px;
+    outline: none;
     cursor: pointer;
-    transition: background-color 0.3s ease;
-    background-color: #f7f8f9;
-    color: #777;
+    padding: 8px 16px;
+    border-radius: 4px;
+    margin-right: 8px;
 }
 
 .like-button:hover,
-.like-button:focus {
-    background-color: #007bff;
-    color: #fff;
+.comment-button:hover {
+    background-color: #f0f0f0;
 }
 
 .like-button.liked {
-    background-color: #007bff;
+    background-color: #00cc00;
     color: #fff;
 }
 
-.comment-button:hover,
-.comment-button:focus {
-    background-color: #6c757d;
-    color: #fff;
-}
-
-.like-button svg,
-.comment-button svg {
+.icon {
     margin-right: 8px;
+}
+
+.likes-count {
+    margin-top: 8px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.comment-button:last-child {
+    margin-right: 0;
 }

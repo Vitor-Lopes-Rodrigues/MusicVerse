@@ -56,6 +56,7 @@ const Home = () => {
                 {posts.map((post, index) => (
                     <Post
                         key={index}
+                        postId={post.id}
                         userId={post.user_id}
                         tittle={post.tittle}
                         description={post.description}
