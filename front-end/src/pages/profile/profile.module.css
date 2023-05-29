@@ -42,3 +42,10 @@
     font-size: 18px;
 }
 
+.register{
+    text-align: center;
+}
+.register p {
+    color: #aaa;
+}
+
