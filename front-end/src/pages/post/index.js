@@ -19,7 +19,7 @@ const Post = () => {
     }, [navigate]);
 
     //Criando constantes de states
-    const [tittle, setTittle] = useState("");
+    const [title, setTittle] = useState("");
     const [image, setImage] = useState("");
     const [description, setDescription] = useState("");
 
@@ -33,7 +33,7 @@ const Post = () => {
         console.log(parseInt(localStorage.getItem('userId')))
 
         const data = {
-            tittle: tittle,
+            title: title,
             description: description,
             image: image,
             user_id: parseInt(localStorage.getItem('userId')),
@@ -62,7 +62,7 @@ const Post = () => {
             <form onSubmit={handleSubmit}>
                 <label>
                     <span>Título:</span>
-                    <input type="text" name="title" required placeholder="Pense num bom título..." onChange={(e) =>setTittle(e.target.value)} value={tittle}/>
+                    <input type="text" name="title" required placeholder="Pense num bom título..." onChange={(e) =>setTittle(e.target.value)} value={title}/>
                 </label>
                 <label>
                     <span>Descrição:</span>

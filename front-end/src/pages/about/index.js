@@ -1,7 +1,8 @@
 import React, {useEffect} from "react"
-import {Link, useNavigate} from "react-router-dom"
+import {Link, useNavigate, useHref} from "react-router-dom"
 import styles from "./about.module.css"
 import Navbar from "../../components/navbar";
+import bannerPrincipal from '../../images/bannerPrincipal.png'
 
 const About = () => {
 
@@ -20,12 +21,22 @@ const About = () => {
     return(
         <>
         <Navbar/>
-            <div className={styles.about}>
-                <h2>Sobre o Mini <span>Blog</span></h2>
-                <p>Este projeto tem o objetivo de integrar um ambiente completo, caso tenha interesse, consulte o nosso GitHub</p>
-                <Link to="/post" className="btn btn-primary">
-                    Criar post
-                </Link>
+            <div className={styles.banner}>
+                <div className={styles.apresentacao}>
+                    <h1 className={styles.titulo}> Embarque nessa! Music Verse</h1>
+                    <p className={styles.paragrafo}> Music Verse é uma rede social exclusivamente voltada
+                        para o mundo o da música beneficiando músicos e público.
+                        Atráves da recém-lançada versão web, a rede funciona,
+                        principalmente, como um extenso e direcional canal de divulgação
+                        de eventos musicais.
+                    </p>
+                    <a className={styles.link_rede} href="https://github.com/Vitor-Lopes-Rodrigues/MusicVerse"> Git Hub </a>
+                </div>
+                <div className={styles.imagens}>
+                    <img className={styles.bannerPrincipal}
+                         src={bannerPrincipal}
+                         aria-hidden={true}/>
+                </div>
             </div>
         </>
     )

@@ -8,8 +8,8 @@ import axios from "axios";
 const Home = () => {
 
     const navigate = useNavigate()
-
     const [posts, setPosts] = useState([])
+    const [searchValue, setSearchValue] = useState("");
 
 
     // Verificar se o usuario está logado
@@ -43,7 +43,15 @@ const Home = () => {
     }, []);
 
     const handleSubmit = (e) => {
-        e.preventDefault()
+        e.preventDefault();
+        // Realizar a busca pelo nome do usuário aqui
+        const filteredPosts = posts.filter((post) =>
+            post && post.title && post.title.toLowerCase().includes(searchValue.toLowerCase())
+        );
+        setPosts(filteredPosts);
+    };
+    const reloadPage  = () => {
+        window.location.reload();
     }
 
     return(
@@ -52,8 +60,9 @@ const Home = () => {
             <div className={styles.home}>
                 <h1>Veja os posts mais recentes</h1>
                 <form onSubmit={handleSubmit} className={styles.search_form}>
-                    <input type="text" placeholder="ou busque pelo perfil desejado" onChange={(e) => e.target.value}/>
-                    <button className="btn btn-dark">Pesquisar</button>
+                    <input type="text" placeholder="Busque pelo perfil desejado"  value={searchValue} onChange={(e) => setSearchValue(e.target.value)}/>
+                    <button className="btn btn-dark">Pesquisar</button>&nbsp;
+                    <button onClick={reloadPage} className="btn btn-primary">Reload</button>
                 </form>
                 {posts.map((post, index) => (
                     <Post

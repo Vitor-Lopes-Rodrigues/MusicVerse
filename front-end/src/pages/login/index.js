@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import {Link, useNavigate} from "react-router-dom";
 import axios from "axios";
 import styles from "./login.module.css";
+import bannerPrincipal from "../../images/bannerPrincipal.png"
 
 const Login = () => {
     // Navigate
@@ -44,6 +45,7 @@ const Login = () => {
 
     return (
         <div className={styles.login}>
+            <img src={bannerPrincipal}/>
             <h1>Entrar</h1>
             <p>Faça o login para poder utilizar o sistema</p>
             <form onSubmit={handleSubmit}>
@@ -59,7 +61,7 @@ const Login = () => {
                            onChange={(e) => setPassword(e.target.value)}/>
                 </label>
                 <br/>
-                <button className="btn">Entrar</button>
+                <button className="btn btn-primary">Entrar</button>
                 {error && <p className="error">{error}</p>}
                 <br/>
                 <br/>

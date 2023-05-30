@@ -7,6 +7,7 @@ import styles from "../../pages/profile/profile.module.css"
 import 'mdb-react-ui-kit/dist/css/mdb.min.css';
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import PostEdit from "../../components/postEdit/postEdit";
+import button from "../../components/button";
 
 const Profile = () => {
 
@@ -33,9 +34,21 @@ const Profile = () => {
         }
     }, [navigate]);
 
-    if(userId==null){
-        userId = parseInt(localStorage.getItem('userId'))
-    }
+    const toggleModal = () => {
+        setShowModal(!showModal);
+    };
+
+    const handleClick = () => {
+        const user = localStorage.getItem('userId'); // Obtendo o ID do usuário do localStorage ou de onde você o armazena
+
+        if (userId !== user) {
+            setShowModal(true);
+            console.log("Invalido")
+        }else{
+            setShowModal(true);
+        }
+    };
+
 
     //Perfil pega dados
     useEffect(() => {
@@ -44,10 +57,6 @@ const Profile = () => {
                 setUser(response.data)
             })
     })
-
-    const handleClick = () => {
-        setShowModal(true);
-    };
 
 
 
@@ -80,14 +89,21 @@ const Profile = () => {
                             <div className={styles.profileCounty}>
                                 <p>{user.country}</p>
                             </div>
-                            <button onClick={handleClick} className="btn btn-primary">Editar</button>
+                            {userId === localStorage.getItem('userId') && (
+                            <button onClick={handleClick} id="meuBotao" className="btn btn-primary">Editar</button>
+                            )}
+                            {showModal && (
+                                <div className="modal">
+                                    <PostEdit
+                                        showModal={showModal} setShowModal={setShowModal}
+                                    />
+                                    <PostEdit/>
+                                    <button onClick={toggleModal}>Fechar</button>
+                                </div>
+                            )}
                         </div>
                     </div>
                 </div>
-            <PostEdit
-                showModal={showModal} setShowModal={setShowModal}
-            />
-            <PostEdit/>
         </>
     )
 }

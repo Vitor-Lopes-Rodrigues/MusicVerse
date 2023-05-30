@@ -1,6 +1,10 @@
 .login{
     text-align: center;
+    margin-top: 45px;
 }
 .login p{
     color: #aaa;
+}
+.login img {
+    width: 85px;
 }

@@ -8,6 +8,9 @@ const Post = ({ postId, userId, title, description, image }) => {
     const [user, setUser] = useState("");
     const [isMyPost, setIsMyPost] = useState(false);
 
+    const config = {
+        headers: { Authorization: `Bearer ${localStorage.getItem('userToken')}` }
+    };
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -32,8 +35,17 @@ const Post = ({ postId, userId, title, description, image }) => {
         // Lógica para editar o post
     };
 
+    const deletePost = async () => {
+        try {
+            await axios.delete(`http://localhost:3001/post/${postId}`, config);
+            window.location.reload();
+        }catch (error){
+            console.error('Erro ao salvar curtida:', error);
+        }
+    }
     const handleDelete = () => {
         // Lógica para excluir o post
+        
     };
 
     const navigate = useNavigate()
@@ -45,14 +57,16 @@ const Post = ({ postId, userId, title, description, image }) => {
         }
     }
 
+
     return (
         <div className="post">
             {isMyPost && (
                 <div className="post-options">
-                    <button className="post-edit-button" onClick={handleEdit}>
+                    <button className="btn btn-info" onClick={handleEdit}>
                         Editar
                     </button>
-                    <button className="post-delete-button" onClick={handleDelete}>
+                    &nbsp;
+                    <button className="btn btn-danger" onClick={deletePost}>
                         Excluir
                     </button>
                 </div>
