@@ -82,7 +82,7 @@ const Post = () => {
                         }}
                     />
                 </label>
-                <button className="btn">Cadastrar</button>
+                <button className="btn btn-primary">Cadastrar</button>
             </form>
             <br/><br/><br/>
         </div>

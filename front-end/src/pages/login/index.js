@@ -52,13 +52,17 @@ const Login = () => {
                     <input type="email" name="displayName" required placeholder="E-mail do usuário" value={email}
                            onChange={(e) => setEmail(e.target.value)}/>
                 </label>
+            <br/>
                 <label>
                     <span>Senha:</span>
                     <input type="password" name="password" required placeholder="Insira sua senha" value={password}
                            onChange={(e) => setPassword(e.target.value)}/>
                 </label>
+                <br/>
                 <button className="btn">Entrar</button>
                 {error && <p className="error">{error}</p>}
+                <br/>
+                <br/>
                 <p>Não tem login? <Link to={"/register"}>Cadastre-se</Link></p>
             </form>
         </div>

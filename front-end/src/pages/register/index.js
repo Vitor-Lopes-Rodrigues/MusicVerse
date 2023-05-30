@@ -173,37 +173,37 @@ const Register = () => {
                 <label>
                     <span>Nome:</span>
                     <input type="text" name="displayName" required placeholder="Nome do usuário" value={displayName} onChange={(e) => setDisplayName(e.target.value)}/>
-                </label>
+                </label><br/>
                     <label className={styles.register}>
                         <span>Genero:</span>
                         <input  type="radio" name="setGender" required placeholder="Genero" value={gender} onChange={(e) => setGender("Male")}/>Homem
                         <input  type="radio" name="setGender" required placeholder="Genero" value={gender} onChange={(e) => setGender("Femile")}/>Mulher
                         <input  type="radio" name="setGender" required placeholder="Genero" value={gender} onChange={(e) => setGender("Others")}/>Outros
-                    </label>
+                    </label><br/>
                 <label>
                     <span>CPF:</span>
                     <input type="text" name="cpf" required placeholder="CPF" value={cpf} onChange={(e) => setCpf(maskCPF(e.target.value))}/>
-                </label>
+                </label><br/>
                 <label>
                     <span>RG:</span>
                     <input type="text" name="rg" required placeholder="RG" value={rg}  maxLength="9" onChange={(e) => setRg(e.target.value)}/>
-                </label>
+                </label><br/>
                 <label>
                     <span>Telefone:</span>
                     <input type="tel" name="phone" maxlength="15" required placeholder="Telefone" value={phone}  onChange={(e) => setPhone(phoneMask(e.target.value))}/>
-                </label>
+                </label><br/>
                 <label>
                     <span>Aniversário:</span>
                     <input type="date" name="birthDate" required placeholder="Aniversário" value={birthDate} onChange={(e) => setBirthDate(e.target.value)}/>
-                </label>
+                </label><br/>
                 <label>
                     <span>Email:</span>
                     <input type="email" name="displayName" required placeholder="E-mail do usuário exemplo@gmail.com" value={email} onChange={(e) => setEmail(e.target.value)}/>
-                </label>
+                </label><br/>
                 <label>
                     <span>Senha:</span>
                     <input type="password" name="password" required placeholder="Insira sua senha" value={password} onChange={(e) => setPassword(e.target.value)}/>
-                </label>
+                </label><br/>
                 <label>
                 <input
                     type="file"
@@ -216,7 +216,7 @@ const Register = () => {
                         setImage(fileName);
                     }}
                 />
-                </label>
+                </label><br/>
                 <label>
                     <span>CEP:</span>
                     <input type="number" name="cep" required placeholder="Insira o seu CEP" value={cep} onChange={(e) => buscarCep(e.target.value)}/>
@@ -236,8 +236,8 @@ const Register = () => {
                 <label>
                     <span>País</span>
                     <input type="text" name="country" required placeholder="Insira seu continente" value={country} onChange={(e) => setCountry(e.target.value)}/>
-                </label>
-                <Button name={'Cadastrar'}/>
+                </label><br/>
+                <Button className="btn btn-primary" name={'Cadastrar'}/><br/><br/>
                 <p>Já tem conta? <Link to={"/login"}>Faça login</Link></p>
             </form>
         </div>

@@ -23,7 +23,7 @@ const About = () => {
             <div className={styles.about}>
                 <h2>Sobre o Mini <span>Blog</span></h2>
                 <p>Este projeto tem o objetivo de integrar um ambiente completo, caso tenha interesse, consulte o nosso GitHub</p>
-                <Link to="/post" className="btn">
+                <Link to="/post" className="btn btn-primary">
                     Criar post
                 </Link>
             </div>

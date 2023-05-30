@@ -1,15 +1,30 @@
 import React from "react";
 import styles from "./navbar.module.css"
 import {NavLink} from "react-router-dom"
+import {Avatar} from "@mui/material";
 
 const Navbar = () => {
     return(
         <nav className={styles.navbar}>
-            <NavLink to="/"className={styles.brand}>
+            <NavLink to="/" className={styles.brand}>
                 <span>MusicVerse</span>
             </NavLink>
             <ul className={styles.links_list}>
-                <li><b>{localStorage.getItem('userName')}</b></li>
+                <Avatar
+                    src={require("../../images/post/imagem_guitarra.jpg")}
+                    sx={{ width: 35, height: 35}}
+                />
+                <li className={styles.dropdown}><b>{localStorage.getItem('userName')}</b>
+                <ul className={styles.dropdown_content}>
+                    <li>
+                        <NavLink to={`/profile/${localStorage.getItem('userId')}`}>Perfil</NavLink>
+                    </li>
+                    <li>
+                        <NavLink to="/login" className={({isActive}) => (isActive ?  styles.active : "" )}>Logout</NavLink>
+                    </li>
+                </ul>
+                </li>
+
                 <li>&nbsp;&nbsp;</li>
                 <li>
                     <NavLink to="/" className={({isActive}) => (isActive ?  styles.active : "" )}>Home</NavLink>
@@ -24,19 +39,19 @@ const Navbar = () => {
                     <NavLink to="/post" className={({isActive}) => (isActive ?  styles.active : "" )}>NovoPost</NavLink>
                 </li>
                 <li>
-                    <NavLink to="/about"className={({isActive}) => (isActive ?  styles.active : "" )}>Sobre</NavLink>
+                    <NavLink to="/about" className={({isActive}) => (isActive ?  styles.active : "" )}>Sobre</NavLink>
                 </li>
-                <li className={styles.dropdown}>
-                    <span>Mais</span>
-                <ul className={styles.dropdown_content}>
-                <li>
-                    <NavLink to="/profile" className={({isActive}) => (isActive ?  styles.active : "" )}>Perfil</NavLink>
-                </li>
-                <li>
-                    <NavLink to="/login" className={({isActive}) => (isActive ?  styles.active : "" )}>Logout</NavLink>
-                </li>
-                </ul>
-                </li>
+                {/*<li className={styles.dropdown}>*/}
+                {/*    <span>Mais</span>*/}
+                {/*<ul className={styles.dropdown_content}>*/}
+                {/*<li>*/}
+                {/*    <NavLink to="/profile" className={({isActive}) => (isActive ?  styles.active : "" )}>Perfil</NavLink>*/}
+                {/*</li>*/}
+                {/*<li>*/}
+                {/*    <NavLink to="/login" className={({isActive}) => (isActive ?  styles.active : "" )}>Logout</NavLink>*/}
+                {/*</li>*/}
+                {/*</ul>*/}
+                {/*</li>*/}
             </ul>
         </nav>
     )

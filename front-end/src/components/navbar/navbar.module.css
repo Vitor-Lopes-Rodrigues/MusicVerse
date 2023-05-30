@@ -16,6 +16,7 @@
 .links_list{
     display: flex;
     list-style: none;
+    padding-top: 8px;
 }
 
 .links_list{
@@ -29,15 +30,20 @@
 .active{
     background-color: #000;
     color: #fff;
+    padding-top: 8px;
 }
+
 
 /* Estilos para o dropdown */
 .dropdown {
     position: relative;
+    cursor: pointer;
+    padding-top: 5px;
 }
 
 .dropdown:hover .dropdown_content {
     display: block;
+
 }
 
 .dropdown_content {
@@ -49,6 +55,7 @@
     min-width: 95px;
     padding: 1px;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+
 }
 
 .dropdown_content li {
