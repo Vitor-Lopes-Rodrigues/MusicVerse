@@ -5,6 +5,7 @@ module.exports = {
   async up (queryInterface, Sequelize) {
      await queryInterface.bulkInsert('Users', [{
        name: "Pedro Paulo",
+       image: "teste.jpg",
        birth_date: "2002-09-09",
        gender: "Male",
        cpf: "48668817809",
@@ -22,6 +23,7 @@ module.exports = {
      },
      {
        name: "José Alvo",
+       image: "teste.jpg",
        birth_date: "2002-09-09",
        gender: "Male",
        cpf: "48668817809",
@@ -39,6 +41,7 @@ module.exports = {
      },
      {
        name: "Ruan Marito",
+       image: "teste.jpg",
        birth_date: "2002-09-09",
        gender: "Male",
        cpf: "48668817809",
