@@ -30,6 +30,8 @@ Para a aplicação <b>Back-end</b> utilizamos o aplicativo de desenvolvimento (W
   
   
   ## Contribution
+-Ana Julia Irineu Nascimento RA:821162230 </br>
+-Brenner Mello Defanti       RA:821162755 </br>
 -Gabriel dos Santos Rezende  RA:821236754 </br>
 -Kelwin Martins Mansanari    RA:821232404 </br>
 -Vitor Lopes Rodrigues       RA:822145993 </br>
