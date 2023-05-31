@@ -12,13 +12,16 @@ const Login = () => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [error, setError] = useState("")
+    const [errorCode, setErrorCode] = useState("")
 
     //Criando submit de formulário
     const handleSubmit =  async (e) => {
         e.preventDefault()
         //Enviei o formulário fica igual a vazio(sem erros)
         setError("")
+        setErrorCode("")
 
+        //Valores passados para login
         const data = {
             email: email,
             password: password
@@ -37,12 +40,18 @@ const Login = () => {
             .catch(function (error){
                 // aqui temos acesso ao erro, quando alguma coisa inesperada acontece:
                 console.log(error)
+                if (error.response) {
+                    setError(error.response.status)
+                }else {
+                    setError("Erro de conexão")
+                }
             })
     }
 
     //Aqui serve para remover o token, bom para logout
     // localStorage.removeItem('token');
 
+    //Código da página
     return (
         <div className={styles.login}>
             <img src={bannerPrincipal}/>
@@ -62,8 +71,10 @@ const Login = () => {
                 </label>
                 <br/>
                 <button className="btn btn-primary">Entrar</button>
-                {error && <p className="error">{error}</p>}
                 <br/>
+                <br/>
+                {/*Código de erro para o usuário caso um dos parametros passados esteja incorreto*/}
+                {error && <p className="error"> Login ou senha inválidos </p>}
                 <br/>
                 <p>Não tem login? <Link to={"/register"}>Cadastre-se</Link></p>
             </form>

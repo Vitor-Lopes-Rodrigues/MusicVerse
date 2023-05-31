@@ -55,7 +55,7 @@ const Register = () => {
             gender:gender,
             cpf:cpf.replaceAll(".", "").replaceAll("-", ""),
             rg:rg,
-            user:phone.replaceAll("-","").replaceAll("(","").replaceAll(")",""),
+            phone:phone.replaceAll("-","").replaceAll("(","").replaceAll(")",""),
             email:email,
             password:password,
             cep:cep,
@@ -176,8 +176,8 @@ const Register = () => {
                 </label><br/>
                     <label className={styles.register}>
                         <span>Genero:</span>
-                        <input  type="radio" name="setGender" required placeholder="Genero" value={gender} onChange={(e) => setGender("Male")}/>Homem
-                        <input  type="radio" name="setGender" required placeholder="Genero" value={gender} onChange={(e) => setGender("Femile")}/>Mulher
+                        <input  type="radio" name="setGender" required placeholder="Genero" value={gender} onChange={(e) => setGender("Male")}/>Homem &nbsp;
+                        <input  type="radio" name="setGender" required placeholder="Genero" value={gender} onChange={(e) => setGender("Femile")}/>Mulher &nbsp;
                         <input  type="radio" name="setGender" required placeholder="Genero" value={gender} onChange={(e) => setGender("Others")}/>Outros
                     </label><br/>
                 <label>

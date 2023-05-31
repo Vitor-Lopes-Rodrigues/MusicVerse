@@ -13,7 +13,6 @@ const Home = () => {
 
 
 
-
     // Verificar se o usuario está logado
     useEffect(() => {
         const loggedInUser = localStorage.getItem('user')

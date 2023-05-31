@@ -1,21 +1,29 @@
+//Importando React, useEffect e useState
 import React, { useEffect, useState } from "react";
-import axios from "axios";
-import Interaction from "../interaction";
+//Importando css
 import "./Post.css";
+//Importando navigates
 import {useNavigate} from "react-router-dom";
+//Importando axios
+import axios from "axios";
+//Importando components
+import Interaction from "../interaction";
 import PostEdit from "../PostEdit";
 import button from "../button";
 
 const Post = ({ postId, userId, title, description, image }) => {
+   //Declarando const
     const [user, setUser] = useState("");
     // const [title, setTittle] = useState("");
     // const [description, setDescription] = useState("");
     const [isMyPost, setIsMyPost] = useState("");
     const [showModal, setShowModal] = useState(false);
 
+    //Usando header de autorização
     const config = {
         headers: { Authorization: `Bearer ${localStorage.getItem('userToken')}` }
     };
+    //Usando useEffect para usuario id
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -48,11 +56,15 @@ const Post = ({ postId, userId, title, description, image }) => {
         }
     }
 
+    //Colocando popPup como true
     const handleClick = () => {
         setShowModal(true);
     };
 
+    //Usando navigate
     const navigate = useNavigate()
+
+    //Const de procurar usuario ao clicar no perfil
     const searchUser = () => {
         // Lógica para clicar no usuário
         if (userId) {
@@ -61,6 +73,7 @@ const Post = ({ postId, userId, title, description, image }) => {
         }
     }
 
+    //Colocando modal se for verdadeiro
     const toggleModal = () => {
         setShowModal(!showModal);
     };

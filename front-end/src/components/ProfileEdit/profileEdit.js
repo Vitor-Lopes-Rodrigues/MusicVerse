@@ -1,11 +1,15 @@
-import Modal from "react-bootstrap/Modal";
+//Importando React
 import React, {useState} from "react";
+//Importando modal de bootstrap
+import Modal from "react-bootstrap/Modal";
+//Importando axios
 import axios from "axios";
 
 
 
 const ProfileEdit = ({showModal, setShowModal, userId, userName, userEmail, userPhone, userCity, userStade, userCountry}) => {
 
+    //Criando constantes para editarProfile
     const [name, setName] = useState(userName);
     const [email, setEmail] = useState(userEmail);
     const [phone, setPhone] = useState(userPhone);
@@ -23,6 +27,7 @@ const ProfileEdit = ({showModal, setShowModal, userId, userName, userEmail, user
     //     setCountry(user.country)
     // }
 
+    //Constante para filtro de data
     const data = {
         name: name,
         email: email,
@@ -35,14 +40,17 @@ const ProfileEdit = ({showModal, setShowModal, userId, userName, userEmail, user
         setName("");
     }
 
+    //Verificando popup
     const handleClose = () => {
         setShowModal(false);
     };
 
+    //Passando token de segurança
     const config = {
         headers: { Authorization: `Bearer ${localStorage.getItem('userToken')}` }
     };
 
+    //Poppup se verdadeiro
     const handleClick = () => {
         setShowModal(true);
 
@@ -53,6 +61,7 @@ const ProfileEdit = ({showModal, setShowModal, userId, userName, userEmail, user
             })
     };
 
+    //Passando handleChange de valores
     const handleChange = (e) => {
         const value = e.target.value();
         setName(value);

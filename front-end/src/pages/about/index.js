@@ -24,11 +24,10 @@ const About = () => {
             <div className={styles.banner}>
                 <div className={styles.apresentacao}>
                     <h1 className={styles.titulo}> Embarque nessa! Music Verse</h1>
-                    <p className={styles.paragrafo}> Music Verse é uma rede social exclusivamente voltada
-                        para o mundo o da música beneficiando músicos e público.
-                        Atráves da recém-lançada versão web, a rede funciona,
-                        principalmente, como um extenso e direcional canal de divulgação
-                        de eventos musicais.
+                    <p className={styles.paragrafo}>
+                        Music Verse é uma plataforma de mídia social dedicada inteiramente ao universo da música,
+                        oferecendo benefícios tanto para músicos quanto para o público. Com o recente lançamento de sua versão web,
+                        a plataforma atua principalmente como um canal abrangente e direcionado para a divulgação de eventos musicais.
                     </p>
                     <a className={styles.link_rede} href="https://github.com/Vitor-Lopes-Rodrigues/MusicVerse"> Git Hub </a>
                 </div>
