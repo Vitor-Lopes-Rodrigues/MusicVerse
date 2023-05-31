@@ -12,6 +12,8 @@ const Home = () => {
     const [searchValue, setSearchValue] = useState("");
 
 
+
+
     // Verificar se o usuario está logado
     useEffect(() => {
         const loggedInUser = localStorage.getItem('user')
@@ -44,7 +46,7 @@ const Home = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // Realizar a busca pelo nome do usuário aqui
+        // Realizar a busca pelo titulo do post aqui
         const filteredPosts = posts.filter((post) =>
             post && post.title && post.title.toLowerCase().includes(searchValue.toLowerCase())
         );
@@ -60,7 +62,7 @@ const Home = () => {
             <div className={styles.home}>
                 <h1>Veja os posts mais recentes</h1>
                 <form onSubmit={handleSubmit} className={styles.search_form}>
-                    <input type="text" placeholder="Busque pelo perfil desejado"  value={searchValue} onChange={(e) => setSearchValue(e.target.value)}/>
+                    <input type="text" placeholder="Busque pelo titulo de publicação desejado"  value={searchValue} onChange={(e) => setSearchValue(e.target.value)}/>
                     <button className="btn btn-dark">Pesquisar</button>&nbsp;
                     <button onClick={reloadPage} className="btn btn-primary">Reload</button>
                 </form>

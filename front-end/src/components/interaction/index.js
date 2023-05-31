@@ -68,10 +68,6 @@ const Interaction = ({ postId }) => {
                     <FaThumbsUp className="icon" size={24} />
                     {liked ? 'Liked' : 'Like'}
                 </button>
-                <button className="comment-button">
-                    <FaComment className="icon" size={24} />
-                    Comment
-                </button>
             </div>
             <p>{likesCount} {likesCount === 1 ? 'pessoa gostou' : 'pessoas gostaram'} disso</p>
         </div>

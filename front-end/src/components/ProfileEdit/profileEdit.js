@@ -1,51 +1,36 @@
 import Modal from "react-bootstrap/Modal";
 import React, {useState} from "react";
+import axios from "axios";
 
 
 
-const PostEdit = ({showModal, setShowModal,item}) => {
+const ProfileEdit = ({showModal, setShowModal, userId, userName, userEmail, userPhone, userCity, userStade, userCountry}) => {
 
+    const [name, setName] = useState(userName);
+    const [email, setEmail] = useState(userEmail);
+    const [phone, setPhone] = useState(userPhone);
+    const [city, setCity] = useState(userCity);
+    const [state, setStade] = useState(userStade);
+    const [country, setCountry] = useState(userCountry);
 
+    // const itemToState = () => {
+    //     setName(user.name)
+    //     setEmail(user.email)
+    //     setPhone(user.phone)
+    //     setCity(user.city)
+    //     setGender(user.gender)
+    //     setStade(user.state)
+    //     setCountry(user.country)
+    // }
 
-    const [name, setName] = useState("");
-    const [email, setEmail] = useState("");
-    const [phone, setPhone] = useState("");
-    const [city, setCity] = useState("");
-    const [gender, setGender] = useState("");
-    const [state, setStade] = useState("");
-    const [country, setCountry] = useState("");
-
-    const itemToState = () => {
-        setName(item.name)
-        setEmail(item.email)
-        setPhone(item.phone)
-        setCity(item.city)
-        setGender(item.gender)
-        setStade(item.state)
-        setCountry(item.country)
-    }
-    const returnData = () => {
-        return {
-            id: item.id,
-            name,
-            email,
-            phone,
-            city,
-            gender,
-            state,
-            country
-        }
-    }
-
-    const [formValues, setFormValues] = useState({
-        user: '',
-        email: '',
-        phone: '',
-        city: '',
-        gender: '',
-        state: '',
-        country: ''
-    });
+    const data = {
+        name: name,
+        email: email,
+        phone: phone,
+        city: city,
+        state: state,
+        country: country
+    };
     const alterarEstado = () => {
         setName("");
     }
@@ -53,8 +38,19 @@ const PostEdit = ({showModal, setShowModal,item}) => {
     const handleClose = () => {
         setShowModal(false);
     };
+
+    const config = {
+        headers: { Authorization: `Bearer ${localStorage.getItem('userToken')}` }
+    };
+
     const handleClick = () => {
         setShowModal(true);
+
+        axios.put(`http://localhost:3001/user/${userId}`, data, config)
+            .then(function (response){
+                console.log(response.data)
+                window.location.reload();
+            })
     };
 
     const handleChange = (e) => {
@@ -63,17 +59,19 @@ const PostEdit = ({showModal, setShowModal,item}) => {
         setEmail(value);
         setPhone(value);
         setCity(value);
-        setGender(value);
         setStade(value);
         setCountry(value);
     };
 
+
+
     const handleSubmit = (event) => {
         event.preventDefault();
         // Faça o que quiser com os valores do formulário
-        console.log(formValues);
+        console.log(name);
         setShowModal(false);
     };
+
     return(
         <>
             <div id="poppup-modal">
@@ -89,7 +87,7 @@ const PostEdit = ({showModal, setShowModal,item}) => {
                                     type="text"
                                     className="form-control"
                                     name="username"
-                                    value={name.user}
+                                    value={name}
                                     onChange={(e) => setName(e.target.value)}
                                 />
                             </div>
@@ -99,7 +97,7 @@ const PostEdit = ({showModal, setShowModal,item}) => {
                                     type="email"
                                     className="form-control"
                                     name="email"
-
+                                    value={email}
                                     onChange={(e) => setEmail(e.target.value)}
                                 />
                             </div>
@@ -109,7 +107,7 @@ const PostEdit = ({showModal, setShowModal,item}) => {
                                     type="text"
                                     className="form-control"
                                     name="phone"
-
+                                    value={phone}
                                     onChange={(e) => setPhone(e.target.value)}
                                 />
                             </div>
@@ -119,18 +117,8 @@ const PostEdit = ({showModal, setShowModal,item}) => {
                                     type="text"
                                     className="form-control"
                                     name="city"
-
+                                    value={city}
                                     onChange={(e) => setCity(e.target.value)}
-                                />
-                            </div>
-                            <div className="form-group">
-                                <label>Gender:</label>
-                                <input
-                                    type="text"
-                                    className="form-control"
-                                    name="gender"
-
-                                    onChange={(e)=> setGender(e.target.value)}
                                 />
                             </div>
                             <div className="form-group">
@@ -139,7 +127,7 @@ const PostEdit = ({showModal, setShowModal,item}) => {
                                     type="text"
                                     className="form-control"
                                     name="state"
-
+                                    value={state}
                                     onChange={(e)=> setStade(e.target.value)}
                                 />
                             </div>
@@ -149,7 +137,7 @@ const PostEdit = ({showModal, setShowModal,item}) => {
                                     type="text"
                                     className="form-control"
                                     name="country"
-
+                                    value={country}
                                     onChange={(e)=> setCountry(e.target.value)}
                                 />
                             </div>
@@ -164,4 +152,4 @@ const PostEdit = ({showModal, setShowModal,item}) => {
     )
 
 }
-export default PostEdit
+export default ProfileEdit

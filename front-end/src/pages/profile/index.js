@@ -6,7 +6,7 @@ import axios from "axios";
 import styles from "../../pages/profile/profile.module.css"
 import 'mdb-react-ui-kit/dist/css/mdb.min.css';
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import PostEdit from "../../components/postEdit/postEdit";
+import ProfileEdit from "../../components/ProfileEdit/profileEdit";
 import button from "../../components/button";
 
 const Profile = () => {
@@ -56,9 +56,7 @@ const Profile = () => {
             .then (function (response){
                 setUser(response.data)
             })
-    })
-
-
+    }, [])
 
     return(
         <>
@@ -94,10 +92,14 @@ const Profile = () => {
                             )}
                             {showModal && (
                                 <div className="modal">
-                                    <PostEdit
-                                        showModal={showModal} setShowModal={setShowModal}
+                                    <ProfileEdit
+                                        showModal={showModal}
+                                        setShowModal={setShowModal}
+                                        userId={user.id} userName={user.name} userEmail={user.email}
+                                        userPhone={user.phone} userCity={user.city} userStade={user.state}
+                                        userCountry={user.country}
                                     />
-                                    <PostEdit/>
+                                    <ProfileEdit/>
                                     <button onClick={toggleModal}>Fechar</button>
                                 </div>
                             )}

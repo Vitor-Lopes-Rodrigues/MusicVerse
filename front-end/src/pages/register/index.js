@@ -190,7 +190,7 @@ const Register = () => {
                 </label><br/>
                 <label>
                     <span>Telefone:</span>
-                    <input type="tel" name="phone" maxlength="15" required placeholder="Telefone" value={phone}  onChange={(e) => setPhone(phoneMask(e.target.value))}/>
+                    <input type="tel" name="phone" required maxlength="15"  placeholder="Telefone" value={phone}  onChange={(e) => setPhone(phoneMask(e.target.value))}/>
                 </label><br/>
                 <label>
                     <span>Aniversário:</span>

@@ -3,10 +3,15 @@ import axios from "axios";
 import Interaction from "../interaction";
 import "./Post.css";
 import {useNavigate} from "react-router-dom";
+import PostEdit from "../PostEdit";
+import button from "../button";
 
 const Post = ({ postId, userId, title, description, image }) => {
     const [user, setUser] = useState("");
-    const [isMyPost, setIsMyPost] = useState(false);
+    // const [title, setTittle] = useState("");
+    // const [description, setDescription] = useState("");
+    const [isMyPost, setIsMyPost] = useState("");
+    const [showModal, setShowModal] = useState(false);
 
     const config = {
         headers: { Authorization: `Bearer ${localStorage.getItem('userToken')}` }
@@ -31,10 +36,9 @@ const Post = ({ postId, userId, title, description, image }) => {
 
     }, [userId]);
 
-    const handleEdit = () => {
-        // Lógica para editar o post
-    };
 
+
+    //Deletando post
     const deletePost = async () => {
         try {
             await axios.delete(`http://localhost:3001/post/${postId}`, config);
@@ -43,9 +47,9 @@ const Post = ({ postId, userId, title, description, image }) => {
             console.error('Erro ao salvar curtida:', error);
         }
     }
-    const handleDelete = () => {
-        // Lógica para excluir o post
-        
+
+    const handleClick = () => {
+        setShowModal(true);
     };
 
     const navigate = useNavigate()
@@ -57,12 +61,15 @@ const Post = ({ postId, userId, title, description, image }) => {
         }
     }
 
+    const toggleModal = () => {
+        setShowModal(!showModal);
+    };
 
     return (
         <div className="post">
             {isMyPost && (
                 <div className="post-options">
-                    <button className="btn btn-info" onClick={handleEdit}>
+                    <button className="btn btn-info" onClick={handleClick}>
                         Editar
                     </button>
                     &nbsp;
@@ -80,6 +87,18 @@ const Post = ({ postId, userId, title, description, image }) => {
             <img className="post-image" src={require(`../../images/post/${image}`)} alt="Post Image" />
             <Interaction postId={postId} />
             <hr className="post-divider" />
+            {showModal && (
+                <div className="modal">
+                    <PostEdit
+                        showModal={showModal}
+                        setShowModal={setShowModal}
+                        postId={postId}
+                        postTitle={title}
+                        postDescription={description}
+                    />
+                    <button onClick={toggleModal}>Fechar</button>
+                </div>
+            )}
         </div>
     );
 };
