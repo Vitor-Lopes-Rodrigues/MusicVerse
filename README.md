@@ -38,6 +38,6 @@ Para a aplicação <b>Back-end</b> utilizamos o aplicativo de desenvolvimento (W
 
 ## License
 # MusicVerse USJT 2023 🫡
-<p><a href="https://youtu.be/efIMTLugfnM">Visit W3Schools.com!</a></p>
+<p><a href="https://youtu.be/efIMTLugfnM">Projeto Music Verse A3</a></p>
   
 
