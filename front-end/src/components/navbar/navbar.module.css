@@ -74,3 +74,31 @@
 .dropdown_content a:hover {
     text-decoration: underline;
 }
+
+@media screen and (max-width: 425px) {
+    .navbar{
+        display: flex;
+        box-shadow: rgba(0,0,0, .45) 0px -2px 10px 0px;
+        justify-content: space-between;
+        align-items: center;
+        padding: .9em 2em ;
+        width: 117.8vw;
+
+    }
+    .links_list{
+        display: flex;
+        list-style: none;
+        padding-top: 8px;
+    }
+    .dropdown_content {
+        display: none;
+        position: absolute;
+        top: 110%;
+        left: 0;
+        background-color: #f9f9f9;
+        min-width: 95px;
+        padding: 1px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    }
+
+}

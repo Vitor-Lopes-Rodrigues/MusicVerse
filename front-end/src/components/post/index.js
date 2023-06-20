@@ -79,7 +79,7 @@ const Post = ({ postId, userId, title, description, image }) => {
     };
 
     return (
-        <div className="post">
+        <div id="post">
             {isMyPost && (
                 <div className="post-options">
                     <button className="btn btn-info" onClick={handleClick}>

@@ -1,4 +1,4 @@
-.post {
+#post {
     background-color: #ffffff;
     border-radius: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -70,4 +70,22 @@
 .post-edit-button:hover,
 .post-delete-button:hover {
     background-color: #999;
+}
+
+@media screen and (max-width: 425px) {
+
+
+    #post{
+        background-color: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        margin-bottom: 20px;
+        display: flex;
+        flex-direction: column;
+        width: 400px;
+        padding-left: 45px;
+    }
+
+
 }
